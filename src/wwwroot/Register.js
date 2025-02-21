@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import InputMask from 'react-input-mask'; 
 const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [cell, setCell] = useState('');
-    const [role, setRole] = useState('auto');  // Novo estado para armazenar o valor do select
+    const [role, setRole] = useState('');  
 
     const register = () => {
         axios.post('http://localhost:3001/register', {
@@ -14,7 +14,7 @@ const Register = () => {
             password: password,
             email: email,
             cell: cell,
-            role: role  // Enviando o valor da seleção para o backend
+            role: role 
         }).then(response => {
             alert(response.data);
         });
@@ -37,7 +37,7 @@ const Register = () => {
 
             <input 
                 type="text" 
-                placeholder="+55 21 90123-4567"
+                placeholder="55 21 90123-4567"
                 onChange={(e) => setCell(e.target.value)}
             />
 
@@ -52,7 +52,7 @@ const Register = () => {
                 onChange={(e) => setRole(e.target.value)}
             >
                 <option value="0">Leitor(a)</option>
-                <option value="1r">Autorr(a)</option>
+                <option value="1">Autor(a)</option>
             </select>
 
             <button onClick={register}>Cadastrar</button>
