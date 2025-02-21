@@ -7,7 +7,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Configuração do banco de dados MySQL
 const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
@@ -20,17 +19,16 @@ db.connect(err => {
     console.log('Conectado ao banco de dados MySQL');
 });
 
-// Rota de cadastro
 app.post('/register', (req, res) => {
-    const { username, password } = req.body;
-    const sql = `INSERT INTO users (username, password) VALUES (?, ?)`;
-    db.query(sql, [username, password], (err, result) => {
+    const { username, email, cell, role, password } = req.body;
+    const sql = `INSERT INTO users (username, email, cell, role, password) VALUES (?, ?, ?, ?, ?)`;
+    db.query(sql, [username, email, cell, role, password], (err, result) => {
         if (err) throw err;
         res.send('Usuário registrado com sucesso!');
+        console.log(res);
     });
 });
 
-// Rota de login
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     const sql = `SELECT * FROM users WHERE username = ? AND password = ?`;
