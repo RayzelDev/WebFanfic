@@ -1,13 +1,12 @@
 import React from 'react'
 import Login from './wwwroot/Login'
-import Register from './wwwroot/Register'
 import './App.css';
+import './css/cLogin.css'
 
 function App() {
   return (
     <div>
       <Login/>
-      <Register/>
     </div>
   );
 }
