@@ -174,8 +174,8 @@ $stories = $conn->query($sql);
           <li>
             <h3><?php echo $story['title']; ?></h3>
             <p><?php echo $story['synopsis']; ?></p>
-            <a href="../Dashboard/edit_story.php?id=<?php echo $story['id']; ?>">Editar</a>
-            <a href="../Dashboard/delete_story.php?id=<?php echo $story['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir esta história?');">Excluir</a>
+            <a href="edit_story.php?id=<?php echo $story['id']; ?>">Editar</a>
+            <a href="delete_story.php?id=<?php echo $story['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir esta história?');">Excluir</a>
           </li>
         <?php endwhile; ?>
       </ul>
